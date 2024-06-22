@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="\stylesheet\login.css">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="google-singnin-client_id" content="485043474685-3gelsa2116fqp14vel6f0cv94gsnnqav.apps.googleusercontent.com">
+    <meta name="google-singnin-client_id" content="734405812430-fcfemcpshg0fu5log9p14bmajdo94qii.apps.googleusercontent.com">
 </head>
 <body>
   <div class="login">
@@ -31,27 +31,6 @@
     </form>
     <a href="/auth/google"><button class="btn-enviar">Google</button></a>
     <a href="/auth/google" onclick="singOut();">Salir</a>
-
-    <script>
-      function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();          //agrege los codigos que vi en el video //
-        console.log('ID: ' + profile.getId()); 
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); 
-      }
-  
-      function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-
-        function signOut() {
-          var auth2 = gapi.auth2.getAuthInstance();
-          auth2.signOut().then(function () {
-            console.log('Salir');
-          });
-        }
-      }
-    </script>
   </div>
 </body>
 </html>
