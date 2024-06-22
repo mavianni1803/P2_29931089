@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="\stylesheet\login.css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-singnin-client_id" content="681224014830-3353i9toe439h4athch917s7igdiclgj.apps.googleusercontent.com ">
+</head>
+<body>
+  <div class="login">
+    <h1>Iniciar Sesión</h1>
+    <% if (error_msg) { %>
+      <p><%= error_msg %></p>
+    <% } %>
+    <form action="/auth/login" method="POST">
+      <div class="usuario">
+        <input type="text" name="username" id="username" autocomplete="off" required>
+        <label for="username">Nombre de Usuario:</label>
+      </div>
+      <div class="usuario">
+        <input type="password" name="password" id="password" autocomplete="off" required>
+        <label for="password">Contraseña:</label>
+      </div>
+      <button type="submit" class="btn-enviar">Ingresar</button>
+      <div class="google">
+        <p>Tambien puedes ingresar con Google:</p>
+      </div>
+    </form>
+    <a href="/auth/google"><button class="btn-enviar">Google</button></a>
+    <a href="/auth/google" onclick="singOut();">Salir</a>
+
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();          //agrege los codigos que vi en el video //
+        console.log('ID: ' + profile.getId()); 
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); 
+      }
+  
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('Salir');
+          });
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
